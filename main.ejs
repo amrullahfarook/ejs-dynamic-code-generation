@@ -1,0 +1,47 @@
+import { registerUser, loginUser } from '../../services/auth/authService'
+
+interface registerRequest{
+        username: string;
+        email: string;
+        password: string
+}
+
+interface loginRequest{
+        username: string;
+        password: string
+}
+
+const handleRegister = (ctx: any) => {
+        const {username, email, password} = <registerRequest>ctx.request.body
+
+        <% if(cognito === "true"){%>let userAttr = []
+        userAttr.push({Name: 'email', Value: email}) <%}%>
+
+        registerUser(username, password, <% if(cognito==="true" ){%>userAttr<%} else {%>email<%}%>).then(result => {
+                if(result != undefined) {
+                        ctx.response.status = 200
+                } else {
+                        ctx.response.status = 500
+                }
+        })
+
+        ctx.body = `New user added: ${username},
+        email: ${email},
+        password: ${password}`;
+};
+
+const handleLogin = (ctx: any) => {
+        const {username, password} = <loginRequest>ctx.request.body
+
+        loginUser(username, password).then((success): any => {
+                if(success) {
+                        ctx.response.status = 200
+                } else {
+                        ctx.response.status = 500
+                }
+        })
+
+        ctx.body = `Successful login: ${username}`;
+};
+
+export { handleRegister, handleLogin };

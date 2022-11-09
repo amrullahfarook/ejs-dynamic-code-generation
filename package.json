@@ -1,0 +1,25 @@
+{
+  "name": "dynamic-cg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "fs-extra": "^10.1.0",
+    "yargs-parser": "^21.1.1"
+  },
+  "devDependencies": {
+    "@types/ejs": "^3.1.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/node": "^18.11.9",
+    "@types/yargs-parser": "^21.0.0",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.8.4"
+  }
+}
